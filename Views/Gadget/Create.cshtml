@@ -1,0 +1,39 @@
+
+@model GadgetInventory.Models.Gadget
+
+@{
+    ViewData["Title"] = "Add New Gadget";
+}
+
+<h1>Add New Gadget</h1>
+
+<form asp-controller="Gadget" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Brand" class="form-label"></label>
+        <input asp-for="Brand" class="form-control" />
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ModelName" class="form-label"></label>
+        <input asp-for="ModelName" class="form-control" />
+        <span asp-validation-for="ModelName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" type="number"
+               step="0.01" min="1" max="5000" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Gadget</button>
+    <a asp-controller="Gadget" asp-action="Index"
+       class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

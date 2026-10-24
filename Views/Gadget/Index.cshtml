@@ -1,0 +1,36 @@
+
+@model IEnumerable<GadgetInventory.Models.Gadget>
+
+@{
+    ViewData["Title"] = "Gadget Inventory";
+}
+
+<h1>Gadget Inventory</h1>
+
+<p>
+    <a asp-controller="Gadget"
+       asp-action="Create"
+       class="btn btn-primary">Add New Gadget</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Model Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gadget in Model)
+        {
+            <tr>
+                <td>@gadget.Id</td>
+                <td>@gadget.Brand</td>
+                <td>@gadget.ModelName</td>
+                <td>@gadget.Price.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
